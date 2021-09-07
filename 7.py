@@ -2,8 +2,6 @@ import pandas as pd
 from sklearn import linear_model
 
 df = pd.read_csv('College.csv')
-
-print(df.head())
 df.Private.replace(('Yes', 'No'), (1, 0), inplace=True)
 
 X = df[['Private', 'Accept', 'Enroll', 'Top10perc', 'Top25perc', 'F.Undergrad',
