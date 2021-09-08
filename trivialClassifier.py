@@ -9,11 +9,15 @@ class trivialClassifier():
         self.parameter = X.median()
         return self.parameter
 
-    def predict(self, y):
+    def predict(self, y, trivial=True):
         if self.parameter == 0:
             print('The model has not been trained')
             pass
-        return np.where(y >= self.parameter, 1, 0)
+        if trivial == False:
+            output = np.where(y >= self.parameter, 1, 0)
+        else:
+            output = [0]*len(y)
+        return output
 
     def score(self, y, test, print=False):
         '''

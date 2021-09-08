@@ -31,7 +31,7 @@ scaled_features[col_names] = features
 
 # c) Split the dataframe into test and train 20/80
 output_samples = 100
-dataset_split_fraction = 0.8
+dataset_split_fraction = 0.05
 accuracy = [0] * output_samples
 for i in range(output_samples):
     msk = np.random.rand(len(df)) < dataset_split_fraction
@@ -39,7 +39,7 @@ for i in range(output_samples):
     test = scaled_features[~msk]
     # print(len(test), len(train))
 
-    # d) Make a trivial classifier.
+    # d) Train a trivial classifier
     TC = tc.trivialClassifier()
     TC.fit(train['Apps'])
     TC.predict(test['Apps'])
