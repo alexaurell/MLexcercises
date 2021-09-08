@@ -15,7 +15,7 @@ class trivialClassifier():
             pass
         return np.where(y >= self.parameter, 1, 0)
 
-    def score(self, y, test):
+    def score(self, y, test, print=False):
         '''
         :param y: testing data on feature
         :param test: testing data on classes
@@ -24,7 +24,8 @@ class trivialClassifier():
         pred = self.predict(y)      # Array of predicted class
         conf_mat = cm(test, pred)   # Confusion matrix
         accuracy = (conf_mat[0, 0] + conf_mat[1, 1]) / np.sum(np.sum(conf_mat))
-        print('Acuracy of prediction: ' + str(accuracy))
+        if print == True:
+            print('Acuracy of prediction: ' + str(accuracy))
         return accuracy
 
 
